@@ -167,7 +167,7 @@ def make_model(env, pre_trained=""):
         # --- Exploration (Epsilon) ---
         exploration_initial_eps=1.0,
         exploration_final_eps=0.0001,
-        exploration_fraction=0.3,    # Reaches 0.01 after 10% of total_timesteps
+        exploration_fraction=0.3,    # Reaches min after x%  of total_timesteps
         
         
         # --- Logging + Device ---
@@ -189,13 +189,14 @@ def main():
 
     args = parser.parse_args()
     
-    model_path = "./output/models/sb3_snake_dqn_baseline.zip"
+    #model_path = "./output/models/sb3_checkpoints/sb3_snake_model_35000000_steps.zip"
+    model_path = "./output/models/sb3_snake_current_best.zip"
 
     if args.train:
         num_envs = 8
         vec_env = make_vec_env(snake_make_env, n_envs=num_envs)
         
-        total_steps = 50_000_000
+        total_steps = 30_000_000
 
         checkpoint_callback = CheckpointCallback(
                 save_freq=125_000, # Saves every save_freq * num_envs steps.
@@ -212,14 +213,14 @@ def main():
         model.learn(
                 total_timesteps=total_steps, 
                 callback=checkpoint_callback,
-                reset_num_timesteps=False,
+                reset_num_timesteps=True,
                 progress_bar=True
         )
 
         print("INFO: Training finished. Saving model...")
-        model.save("sb3_snake_dqn_tr2")
+        model.save("./output/models/new_model")
     elif args.eval:
-        evaluate_model(model_path=model_path, csv_path="./output/csv/eval.csv")
+        evaluate_model(model_path=model_path, csv_path="./output/csv/eval.csv", num_games=10_000)
     elif args.watch:
         watch_model(model_path=model_path)
     else:

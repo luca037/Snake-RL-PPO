@@ -145,26 +145,18 @@ class SnakeGame:
             self._place_food()
         else:
             # Give reward for each step.
-            if len(self.snake) > 10:
-                reward += 0.01
+            #if len(self.snake) > 10:
+            #    reward += 0.01
 
-            ## Give reward if head is on the border.
-            #i = self.head.y // BLOCK_SIZE
-            #j = self.head.x // BLOCK_SIZE
-            #if i == 0 or j == 0 or i == 9 or j == 9:
-            #    reward += 0.02
+            if len(self.snake) > 25:
+                # Give reward if head is on the border.
+                i = self.head.y // BLOCK_SIZE
+                j = self.head.x // BLOCK_SIZE
+                if i == 0 or j == 0 or i == 9 or j == 9:
+                    reward += 0.02
 
             self.snake.pop()
     
-        # Give reward based on distance to food.
-        #self.prev_dist = self.dist
-        #self._dist_food_head()
-        #if self.head != self.food:
-        #    if  self.dist < self.prev_dist:
-        #        reward = 1
-        #        #print("Dist =", self.dist)
-        #    else:
-        #        reward = -1
 
         # 5. Update ui and clock.
         if self.gui:
