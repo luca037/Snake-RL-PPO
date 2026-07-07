@@ -1,12 +1,15 @@
 import matplotlib
 import matplotlib.pyplot as plt
-matplotlib.use('QtAgg')
+import platform
+if platform.system() == 'Linux': # Remove this if you don't needed!
+    matplotlib.use('QtAgg')
 import seaborn as sns
 import pandas as pd
 import numpy as np
 
 ### Global settings and vars ###
 plt.style.use('seaborn-v0_8-bright')
+
 INPUT_CSV = "./output/csv/eval.csv"
 
 def score_histogram_plot(outfile):
@@ -23,12 +26,11 @@ def score_histogram_plot(outfile):
     print(mu)
 
     # Create the histogram and capture the 'patches'.
-    #n, bins, patches = plt.hist(df['score'], bins=bins, density=True, edgecolor='black', alpha=1, align='left')
     sns.histplot(
         data=df, 
         x='score', 
         bins=bins, 
-        color="purple",
+        color="orange",
         stat='density', 
         kde=True, 
         edgecolor='black', 
@@ -53,4 +55,3 @@ def score_histogram_plot(outfile):
 
 if __name__ == '__main__':
     score_histogram_plot("./output/plots/score_histogram_plot.png")
-
