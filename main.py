@@ -30,7 +30,8 @@ elif torch.backends.mps.is_available():
 else:
     print("INFO: CUDA and MPS not available. Running on CPU.")
 
-# Unified TensorBoard log path (fixes the path discrepancy bug).
+
+# Unified TensorBoard log path.
 TENSORBOARD_LOG_DIR = "./output/plots/tensorboard/"
 
 
@@ -222,13 +223,15 @@ def main():
     parser.add_argument("--train", action="store_true", help="If you want to train the agent.")
     parser.add_argument("--eval", action="store_true", help="If you want to evaluate the agent.")
     parser.add_argument("--watch", action="store_true", help="If you want to watch the agent play.")
-
+    parser.add_argument("--checkpoint", type=str, default="", help="Model checkpoint.")
     args = parser.parse_args()
 
-    model_path = "./output/models/sb3_snake_ppo_best_TR1.zip"
+    # Model checkpoint used to restart trainig/evaluate/watch.
+    model_path = args.checkpoint
 
     if args.train:
         num_envs = 16
+
         # Use SubprocVecEnv for true parallel rollouts with PPO.
         vec_env = make_vec_env(snake_make_env, n_envs=num_envs, vec_env_cls=SubprocVecEnv)
 
