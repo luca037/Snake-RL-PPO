@@ -214,9 +214,38 @@ graph TD
     style Add3 fill:#f9f,stroke:#333
 ```
 
-
 ---
 
 ## Results
 
-*Coming soon.*
+### Training
+
+<div align="center">
+<img width="1000" height="500" alt="ep_rew_mean" src="https://github.com/user-attachments/assets/fc32ca97-cfc0-427a-b33d-383ab0e0fa9d" />
+</div>
+
+### Evaluation (score distribution)
+
+<div align="center">
+<img width="640" height="480" alt="score_histogram_plot" src="https://github.com/user-attachments/assets/e125c78a-ba24-45d1-a1a6-1b66a1e9c57a" />
+</div>
+
+### Learned policy
+
+<table align="center">
+  <tr>
+    <th align="center">Hamiltonian cycle baseline</th>
+    <th align="center">Trained Agent</th>
+  </tr>
+  <tr>
+    <td align="center">
+      <img width="200" height="228" alt="output" src="https://github.com/user-attachments/assets/59dfd0b8-1504-4890-8f78-549c9133dae2" />
+    </td>
+    <td align="center">
+      <img width="200" height="228" alt="PPO" src="https://github.com/user-attachments/assets/63509e5e-f7ef-4831-9e49-ef2b92b80c94" />
+    </td>
+  </tr>
+</table>
+
+
+
