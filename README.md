@@ -247,5 +247,11 @@ graph TD
   </tr>
 </table>
 
+The Hamiltonian cycle baseline is an hardcoded policy.
+With this policy the agent will always win the game and therefore this is an optimal policy if you evaluate policies based only on the winning rate.
+However, its limitation is slowness: it requires many steps to reach end game.
 
-
+An optimal policy should move aggressively toward the food during the early stages of the game and gradually transition to a Hamiltonian cycle strategy as the snake grows.
+As shown in the gif, our trained agent has learned a behavior that closely matches this intuition. 
+As the score increases, its policy progressively resembles a Hamiltonian-cycle strategy, while in the early game it takes shortcuts instead of visiting every cell, allowing it to reach the food more efficiently.
+Interestingly this policy was learned using a very simple reward function!
