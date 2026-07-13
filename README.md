@@ -1,3 +1,8 @@
+<div align="center">
+<img width="200" height="200" alt="new_snake_logo" src="https://github.com/user-attachments/assets/470f66b7-5c69-40a4-99e0-66f309890368" />
+</div>
+
+
 # Snake RL - Proximal Policy Optimization
 
 The goal of this repository is to showcase a clean, minimal pipeline for training a Reinforcement Learning agent that masters the classic Snake game. The project is built around **[Gymnasium](https://gymnasium.farama.org/)** (for the game environment) and **[Stable-Baselines3](https://stable-baselines3.readthedocs.io/)** (for the RL algorithm).
