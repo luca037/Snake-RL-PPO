@@ -230,6 +230,9 @@ graph TD
 <img width="640" height="480" alt="score_histogram_plot" src="https://github.com/user-attachments/assets/e125c78a-ba24-45d1-a1a6-1b66a1e9c57a" />
 </div>
 
+Each time the snake eats an apple, the score and its length increase by one. Since the game board is $10\times 10$, the maximum length is 100 and since the 
+starting length is 3, the maximum score is 97. From the plot above we can see that the agent win almost 50% of the time. The plot above was created considering 10k games.
+
 ### Learned policy
 
 <table align="center">
